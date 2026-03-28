@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>{{ subject }}</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+    body { margin: 0; padding: 0; width: 100% !important; background-color: #F0F4F8; }
+
+    /* ── Layout ── */
+    .email-wrapper { width: 100%; background-color: #F0F4F8; padding: 32px 16px; }
+    .email-container { max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }
+
+    /* ── Header ── */
+    .header-bar { background-color: #1A2332; padding: 0; }
+    .header-teal-line { background-color: #00C9A7; height: 4px; }
+    .header-inner { padding: 28px 40px 24px; text-align: center; }
+    .header-logo { max-width: 180px; height: auto; display: inline-block; }
+    .header-tagline { color: #8A9BB0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin: 12px 0 0; }
+
+    /* ── Issue meta ── */
+    .issue-meta { background-color: #F5FFFE; border-bottom: 1px solid #E0F5F0; padding: 14px 40px; text-align: center; }
+    .issue-meta-text { color: #8A9BB0; font-size: 13px; }
+    .issue-date { color: #00C9A7; font-weight: 600; }
+
+    /* ── Body ── */
+    .body-inner { padding: 40px 40px 32px; }
+
+    /* ── TL;DR callout ── */
+    .tldr-box { background-color: #F5FFFE; border-left: 4px solid #00C9A7; border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 0 0 36px; }
+    .tldr-label { color: #00C9A7; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 8px; }
+    .tldr-text { color: #1A2332; font-size: 15px; line-height: 1.7; margin: 0; }
+
+    /* ── Section ── */
+    .section { margin: 0 0 40px; }
+    .section-heading { color: #1A2332; font-size: 20px; font-weight: 700; line-height: 1.3; margin: 0 0 6px; border-bottom: 2px solid #00C9A7; padding-bottom: 10px; }
+    .section-body { color: #3D4F63; font-size: 15px; line-height: 1.75; margin: 16px 0 0; }
+    .section-body p { margin: 0 0 14px; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body strong { color: #1A2332; }
+    .section-body ul { padding-left: 20px; margin: 8px 0 14px; }
+    .section-body li { margin-bottom: 6px; }
+    .section-body a { color: #00C9A7; text-decoration: none; border-bottom: 1px solid rgba(0,201,167,0.3); }
+    .section-body a:hover { border-bottom-color: #00C9A7; }
+
+    /* ── Section image ── */
+    .section-image { margin: 20px 0; border-radius: 8px; overflow: hidden; }
+    .section-image img { width: 100%; height: auto; display: block; border-radius: 8px; }
+
+    /* ── Sources ── */
+    .sources { margin: 16px 0 0; padding: 12px 16px; background-color: #F8FAFC; border-radius: 6px; }
+    .sources-label { color: #8A9BB0; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 6px; }
+    .sources-list { list-style: none; margin: 0; padding: 0; }
+    .sources-list li { font-size: 12px; color: #8A9BB0; margin-bottom: 4px; }
+    .sources-list a { color: #00C9A7; text-decoration: none; }
+    .sources-list .badge-high { display: inline-block; background: #E6FBF6; color: #00A882; font-size: 10px; padding: 1px 5px; border-radius: 3px; margin-left: 4px; }
+
+    /* ── Divider ── */
+    .section-divider { border: none; border-top: 1px solid #EDF2F7; margin: 8px 0 40px; }
+
+    /* ── CTA ── */
+    .cta-section { text-align: center; margin: 8px 0 40px; }
+    .cta-button { display: inline-block; background-color: #00C9A7; color: #FFFFFF !important; font-size: 15px; font-weight: 700; text-decoration: none; padding: 14px 36px; border-radius: 8px; letter-spacing: 0.02em; }
+
+    /* ── Sign-off ── */
+    .signoff { color: #3D4F63; font-size: 14px; line-height: 1.7; margin: 0 0 32px; border-top: 1px solid #EDF2F7; padding-top: 28px; }
+
+    /* ── Subject variants ── */
+    .subject-variants { background-color: #FFFBF0; border: 1px solid #FFE599; border-radius: 8px; padding: 16px 20px; margin: 0 0 36px; }
+    .subject-variants-label { color: #B8860B; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 8px; }
+    .subject-variants ul { margin: 0; padding-left: 18px; }
+    .subject-variants li { color: #5A4A00; font-size: 13px; margin-bottom: 4px; }
+
+    /* ── Footer ── */
+    .footer { background-color: #1A2332; padding: 28px 40px; text-align: center; }
+    .footer-logo { max-width: 100px; height: auto; opacity: 0.7; margin-bottom: 16px; display: inline-block; }
+    .footer-text { color: #8A9BB0; font-size: 12px; line-height: 1.7; margin: 0 0 12px; }
+    .footer-links a { color: #00C9A7; text-decoration: none; font-size: 12px; margin: 0 8px; }
+    .footer-teal-line { background-color: #00C9A7; height: 3px; }
+
+    /* ── Responsive ── */
+    @media only screen and (max-width: 600px) {
+      .email-wrapper { padding: 0 !important; }
+      .email-container { border-radius: 0 !important; }
+      .header-inner, .body-inner, .issue-meta { padding-left: 24px !important; padding-right: 24px !important; }
+      .footer { padding-left: 24px !important; padding-right: 24px !important; }
+      .section-heading { font-size: 18px !important; }
+    }
+
+    /* ── Dark mode ── */
+    @media (prefers-color-scheme: dark) {
+      body, .email-wrapper { background-color: #0F1923 !important; }
+      .email-container { background-color: #1A2332 !important; }
+      .section-heading { color: #FFFFFF !important; }
+      .section-body, .tldr-text { color: #C8D6E5 !important; }
+      .section-body strong { color: #FFFFFF !important; }
+      .sources { background-color: #243447 !important; }
+      .section-divider { border-color: #2D4057 !important; }
+      .subject-variants { background-color: #243447 !important; border-color: #3D5266 !important; }
+      .subject-variants li, .subject-variants-label { color: #C8D6E5 !important; }
+      .signoff { color: #C8D6E5 !important; border-color: #2D4057 !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Preheader (hidden preview text for email clients) -->
+  <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">
+    {{ preview_text }}&nbsp;&#847;&nbsp;&#847;&nbsp;&#847;&nbsp;&#847;&nbsp;&#847;&nbsp;&#847;&nbsp;&#847;&nbsp;&#847;&nbsp;&#847;&nbsp;&#847;&nbsp;&#847;&nbsp;&#847;
+  </div>
+
+  <div class="email-wrapper">
+    <div class="email-container">
+
+      <!-- ── Header ── -->
+      <div class="header-bar">
+        <div class="header-teal-line"></div>
+        <div class="header-inner">
+          {% if logo_base64 %}
+          <img src="data:image/png;base64,{{ logo_base64 }}" alt="Xerxes.AI" class="header-logo">
+          {% else %}
+          <span style="color:#00C9A7;font-size:24px;font-weight:800;letter-spacing:-0.02em;">Xerxes<span style="color:#FFFFFF;">.AI</span></span>
+          {% endif %}
+          <p class="header-tagline">Intelligence you can act on</p>
+        </div>
+      </div>
+
+      <!-- ── Issue meta ── -->
+      <div class="issue-meta">
+        <span class="issue-meta-text">
+          {% if issue_number %}Issue #{{ issue_number }} &nbsp;·&nbsp; {% endif %}
+          <span class="issue-date">{{ date }}</span>
+          {% if audience %} &nbsp;·&nbsp; For {{ audience }}{% endif %}
+        </span>
+      </div>
+
+      <!-- ── Body ── -->
+      <div class="body-inner">
+
+        <!-- Subject line A/B variants (visible in HTML preview only, not in sent email) -->
+        {% if subject_variants and subject_variants|length > 0 %}
+        <div class="subject-variants">
+          <div class="subject-variants-label">Subject Line Options</div>
+          <ul>
+            {% for variant in subject_variants %}
+            <li>{{ variant }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <!-- TL;DR -->
+        {% if tldr %}
+        <div class="tldr-box">
+          <div class="tldr-label">TL;DR</div>
+          <p class="tldr-text">{{ tldr }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Sections -->
+        {% for section in sections %}
+        <div class="section">
+          <h2 class="section-heading">{{ section.heading }}</h2>
+
+          <div class="section-body">
+            {{ section.body_html | safe }}
+          </div>
+
+          {% if section.image_base64 %}
+          <div class="section-image">
+            <img src="data:image/png;base64,{{ section.image_base64 }}" alt="{{ section.heading }}" style="width:100%;height:auto;display:block;border-radius:8px;">
+          </div>
+          {% endif %}
+
+          {% if section.sources and section.sources|length > 0 %}
+          <div class="sources">
+            <div class="sources-label">Sources</div>
+            <ul class="sources-list">
+              {% for src in section.sources %}
+              <li>
+                {% if src.url %}<a href="{{ src.url }}" target="_blank">{{ src.title }}</a>{% else %}{{ src.title }}{% endif %}
+                {% if src.credibility == 'high' %}<span class="badge-high">verified</span>{% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+
+        {% if not loop.last %}<hr class="section-divider">{% endif %}
+        {% endfor %}
+
+        <!-- CTA -->
+        {% if cta and cta.text %}
+        <div class="cta-section">
+          <a href="{{ cta.url or '#' }}" class="cta-button">{{ cta.text }}</a>
+        </div>
+        {% endif %}
+
+        <!-- Sign-off -->
+        {% if closing %}
+        <div class="signoff">
+          <p>{{ closing }}</p>
+        </div>
+        {% endif %}
+
+      </div>
+
+      <!-- ── Footer ── -->
+      <div class="footer">
+        {% if logo_base64 %}
+        <img src="data:image/png;base64,{{ logo_base64 }}" alt="Xerxes.AI" class="footer-logo">
+        {% endif %}
+        <p class="footer-text">
+          {{ footer.company or 'Xerxes.AI' }}<br>
+          {% if footer.address %}{{ footer.address }}<br>{% endif %}
+          You're receiving this because you subscribed to the Xerxes.AI newsletter.
+        </p>
+        <div class="footer-links">
+          <a href="{{ footer.unsubscribe_url or '#' }}">Unsubscribe</a>
+          &nbsp;·&nbsp;
+          <a href="#">View in browser</a>
+        </div>
+      </div>
+      <div class="footer-teal-line"></div>
+
+    </div><!-- /email-container -->
+  </div><!-- /email-wrapper -->
+</body>
+</html>
