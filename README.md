@@ -89,7 +89,7 @@ Delivery Layer (Gmail API)
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ai-content-automation-system.git
+git clone https://github.com/asadcs/ai-content-automation-system.git
 cd ai-content-automation-system
 ```
 
@@ -186,4 +186,4 @@ It reflects real-world applications in marketing automation, content operations,
 
 ## Author
 
-Asad
+Muhammad Asadullah
