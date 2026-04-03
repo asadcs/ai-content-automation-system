@@ -1,86 +1,95 @@
 # AI Content Automation System – Newsletter Workflow
 
-An end-to-end AI-powered pipeline that automates topic research, structured content generation, infographic creation, and email delivery using modern LLM and API-based workflows.
+An AI-powered system that automates end-to-end newsletter creation, from topic research to content generation, infographic creation, and email delivery using a modular workflow architecture.
 
 ---
 
 ## Overview
 
-This project automates the complete lifecycle of newsletter creation, transforming a single topic input into a fully designed and deliverable HTML newsletter.
+This project implements a production-style AI automation pipeline that transforms a single topic input into a fully structured, styled, and deliverable HTML newsletter.
 
-The system is built as a modular AI pipeline and demonstrates real-world applications of LLMs, workflow orchestration, and API integration.
-
----
-
-## Key Capabilities
-
-- Automated topic research using Perplexity API
-- Structured HTML content generation using Claude
-- AI-generated infographics with fallback support
-- Branded email rendering (Xerxes.AI style)
-- Gmail API integration with draft-first safety
-- Modular and extensible pipeline architecture
+It demonstrates real-world applications of AI agents, workflow orchestration, and API-driven automation systems.
 
 ---
 
-## System Architecture
+## Architecture
 
+The system follows a modular pipeline design:
+
+- Research Layer → Collects structured insights using external APIs  
+- Planning Layer → Organizes content into sections and structure  
+- Generation Layer → Produces high-quality HTML content using LLMs  
+- Infographic Layer → Generates supporting visuals  
+- Rendering Layer → Converts content into styled HTML newsletters  
+- Delivery Layer → Sends emails via Gmail API  
+
+---
+
+## System Flow
+
+```mermaid
+graph TD
+
+A[User Input / Topic] --> B[Research Layer]
+B --> C[Content Planning]
+C --> D[Content Generation]
+
+D --> E[Infographic Generation]
+E --> F[HTML Rendering]
+F --> G[Email Delivery]
+
+G --> H[Recipient Inbox]
 ```
-User Input
-   ↓
-Research Layer (Perplexity API)
-   ↓
-Content Planning Layer
-   ↓
-Generation Layer (Claude)
-   ↓
-Infographic Generation
-   ↓
-Rendering Layer (HTML + Styling)
-   ↓
-Delivery Layer (Gmail API)
+
+---
+
+## Workflow Process
+
+```mermaid
+flowchart TD
+
+A[Input Topic & Audience] --> B[Research & Data Extraction]
+B --> C[Content Planning]
+C --> D[Generate Content]
+D --> E[Generate Infographics]
+E --> F[Render HTML Newsletter]
+F --> G[Preview & Validate]
+G --> H[Send via Gmail API]
 ```
 
-### Architecture Breakdown
+---
 
-- **Research Layer**
-  Collects structured insights and statistics from external APIs
+## Features
 
-- **Planning Layer**
-  Organizes content into sections, TL;DR, and subject lines
+- Automated topic research using external APIs  
+- Structured content generation using LLMs  
+- AI-generated infographics with fallback support  
+- Branded HTML email rendering  
+- Gmail API integration with draft-first safety  
+- Modular and extensible workflow architecture  
 
-- **Generation Layer**
-  Uses Claude to generate structured, readable HTML content
+---
 
-- **Rendering Layer**
-  Converts structured data into styled HTML emails
+## Project Structure
 
-- **Delivery Layer**
-  Sends emails via Gmail API with draft and send modes
+.tmp/              # Temporary processing files  
+tools/             # Python scripts (execution layer)  
+workflows/         # Workflow definitions  
+brand_assets/      # Branding (logo, styles, templates)  
+reports/           # Generated outputs  
+.env               # API keys and environment variables  
 
 ---
 
 ## Tech Stack
 
-- Python
-- Claude (LLM for content generation)
-- Perplexity API (research)
-- Gmail API (email delivery)
-- Jinja2, Premailer (HTML rendering)
-- Pillow / AI APIs (infographics)
-- BeautifulSoup (HTML processing)
-
----
-
-## Workflow
-
-1. Topic input and audience definition
-2. Research and data extraction
-3. Content planning and structuring
-4. Infographic generation
-5. HTML newsletter rendering
-6. Preview and validation
-7. Email delivery via Gmail API
+- Python  
+- Claude (LLM for content generation)  
+- Perplexity API (research)  
+- Gmail API (email delivery)  
+- Jinja2, Premailer (HTML rendering)  
+- Pillow / AI APIs (image generation)  
+- BeautifulSoup (HTML processing)  
 
 ---
 
@@ -88,99 +97,68 @@ Delivery Layer (Gmail API)
 
 ### 1. Clone the repository
 
-```bash
-git clone https://github.com/asadcs/ai-content-automation-system.git
-cd ai-content-automation-system
-```
+git clone https://github.com/asadcs/ai-content-automation-system.git  
+cd ai-content-automation-system  
 
 ### 2. Install dependencies
 
-```bash
-pip install -r requirements.txt
-```
+pip install -r requirements.txt  
 
 ### 3. Configure environment variables
 
-Create a `.env` file:
-
-```
-PERPLEXITY_API_KEY=your_key
-GMAIL_SENDER_ADDRESS=your_email
-GMAIL_RECIPIENT_ADDRESS=recipient_email
-```
+PERPLEXITY_API_KEY=your_key  
+GMAIL_SENDER_ADDRESS=your_email  
+GMAIL_RECIPIENT_ADDRESS=recipient_email  
 
 ### 4. Add Google credentials
 
-- Place `credentials.json` in the root directory
-- Enable Gmail API in Google Cloud Console
+- Place credentials.json in the root directory  
+- Enable Gmail API in Google Cloud Console  
 
 ---
 
 ## Usage
 
-### Step 1: Research Topic
+python tools/research_topic.py --topic "AI agents" --audience "tech professionals"  
 
-```bash
-python tools/research_topic.py --topic "AI agents" --audience "tech professionals"
-```
+python tools/generate_infographics.py --prompts-json .tmp/image_prompts.json  
 
-### Step 2: Generate Infographics
+python tools/generate_newsletter_html.py --content .tmp/content.json --images-dir .tmp/  
 
-```bash
-python tools/generate_infographics.py --prompts-json .tmp/image_prompts.json
-```
+python tools/preview_newsletter.py --file .tmp/newsletter.html  
 
-### Step 3: Generate Newsletter HTML
-
-```bash
-python tools/generate_newsletter_html.py --content .tmp/content.json --images-dir .tmp/
-```
-
-### Step 4: Preview Newsletter
-
-```bash
-python tools/preview_newsletter.py --file .tmp/newsletter.html
-```
-
-### Step 5: Send via Gmail
-
-```bash
-python tools/send_gmail.py --html-file .tmp/newsletter.html --subject "Your Subject"
-```
+python tools/send_gmail.py --html-file .tmp/newsletter.html --subject "Your Subject"  
 
 ---
 
-## Why This Project Matters
+## Use Case
 
-This project demonstrates how AI can automate end-to-end content pipelines, reducing manual effort in research, writing, and distribution.
-
-It reflects real-world applications in marketing automation, content operations, and AI-driven workflows.
+Built for automating content workflows in marketing and AI-driven businesses, enabling scalable and consistent newsletter production.
 
 ---
 
 ## Key Learnings
 
-- Designing modular AI pipelines
-- Working with LLMs for structured generation
-- Orchestrating multiple APIs in a workflow
-- Building production-style automation systems
+- Designing modular AI workflows  
+- Using LLMs for structured content generation  
+- Integrating multiple APIs into a pipeline  
+- Building production-style automation systems  
 
 ---
 
 ## Security Notes
 
-- `.env` and API keys are excluded via `.gitignore`
-- Gmail OAuth tokens stored locally (`token.json`)
+- .env and API keys are excluded via .gitignore  
+- OAuth credentials stored locally (token.json)  
 
 ---
 
 ## Future Improvements
 
-- Web dashboard for workflow control
-- Multi-recipient campaigns
-- Scheduling and automation triggers
-- Analytics and engagement tracking
-- CRM integration
+- Web dashboard  
+- Scheduling automation  
+- Analytics tracking  
+- CRM integration  
 
 ---
 
